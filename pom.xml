@@ -44,6 +44,7 @@
         <module>zookeeper-ribbon-service</module>
         <module>zookeeper-user-service</module>
         <module>zuul-proxy</module>
+
     </modules>
 
 </project>
