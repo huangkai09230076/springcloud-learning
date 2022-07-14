@@ -92,16 +92,16 @@ public class UserService {
         return restTemplate.postForObject(userServiceUrl + "/user/delete/{1}", null, CommonResult.class, id);
     }
 
-    @HystrixCollapser(batchMethod = "getUserByIds",collapserProperties = {
+    @HystrixCollapser(batchMethod = "getUserByIds", collapserProperties = {
             @HystrixProperty(name = "timerDelayInMilliseconds", value = "100")
     })
     public Future<User> getUserFuture(Long id) {
-        return new AsyncResult<User>(){
+        return new AsyncResult<User>() {
             @Override
             public User invoke() {
                 CommonResult commonResult = restTemplate.getForObject(userServiceUrl + "/user/{1}", CommonResult.class, id);
                 Map data = (Map) commonResult.getData();
-                User user = BeanUtil.mapToBean(data,User.class,true);
+                User user = BeanUtil.mapToBean(data, User.class, true);
                 LOGGER.info("getUserById username:{}", user.getUsername());
                 return user;
             }
@@ -111,7 +111,7 @@ public class UserService {
     @HystrixCommand
     public List<User> getUserByIds(List<Long> ids) {
         LOGGER.info("getUserByIds:{}", ids);
-        CommonResult commonResult = restTemplate.getForObject(userServiceUrl + "/user/getUserByIds?ids={1}", CommonResult.class, CollUtil.join(ids,","));
+        CommonResult commonResult = restTemplate.getForObject(userServiceUrl + "/user/getUserByIds?ids={1}", CommonResult.class, CollUtil.join(ids, ","));
         return (List<User>) commonResult.getData();
     }
 }

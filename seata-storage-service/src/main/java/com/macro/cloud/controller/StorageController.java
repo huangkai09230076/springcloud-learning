@@ -20,6 +20,6 @@ public class StorageController {
     @RequestMapping("/decrease")
     public CommonResult decrease(Long productId, Integer count) {
         storageService.decrease(productId, count);
-        return new CommonResult("扣减库存成功！",200);
+        return new CommonResult("扣减库存成功！", 200);
     }
 }

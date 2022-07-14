@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * Retrofit服务间调用
  * Created by macro on 2019/8/29.
  */
-@Api(tags = "UserRetrofitController",description = "Retrofit服务间调用")
+@Api(tags = "UserRetrofitController", description = "Retrofit服务间调用")
 @RestController
 @RequestMapping("/user")
 public class UserRetrofitController {

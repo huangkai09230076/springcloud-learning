@@ -14,34 +14,34 @@ import org.springframework.web.bind.annotation.RestController;
  * 限流功能
  * Created by macro on 2019/11/7.
  */
-@Api(tags = "RateLimitController",description = "限流功能")
+@Api(tags = "RateLimitController", description = "限流功能")
 @RestController
 @RequestMapping("/rateLimit")
 public class RateLimitController {
 
     @ApiOperation("按资源名称限流，需要指定限流处理逻辑")
     @GetMapping("/byResource")
-    @SentinelResource(value = "byResource",blockHandler = "handleException")
+    @SentinelResource(value = "byResource", blockHandler = "handleException")
     public CommonResult byResource() {
         return new CommonResult("按资源名称限流", 200);
     }
 
     @ApiOperation("按URL限流，有默认的限流处理逻辑")
     @GetMapping("/byUrl")
-    @SentinelResource(value = "byUrl",blockHandler = "handleException")
+    @SentinelResource(value = "byUrl", blockHandler = "handleException")
     public CommonResult byUrl() {
         return new CommonResult("按url限流", 200);
     }
 
     @ApiOperation("自定义通用的限流处理逻辑")
     @GetMapping("/customBlockHandler")
-    @SentinelResource(value = "customBlockHandler", blockHandler = "handleException",blockHandlerClass = CustomBlockHandler.class)
+    @SentinelResource(value = "customBlockHandler", blockHandler = "handleException", blockHandlerClass = CustomBlockHandler.class)
     public CommonResult blockHandler() {
         return new CommonResult("限流成功", 200);
     }
 
-    public CommonResult handleException(BlockException exception){
-        return new CommonResult(exception.getClass().getCanonicalName(),200);
+    public CommonResult handleException(BlockException exception) {
+        return new CommonResult(exception.getClass().getCanonicalName(), 200);
     }
 
 }

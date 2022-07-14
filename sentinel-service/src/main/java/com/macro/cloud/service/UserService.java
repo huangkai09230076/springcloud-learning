@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Created by macro on 2019/9/5.
  */
-@FeignClient(value = "nacos-user-service",fallback = UserFallbackService.class)
+@FeignClient(value = "nacos-user-service", fallback = UserFallbackService.class)
 public interface UserService {
     @PostMapping("/user/create")
     CommonResult create(@RequestBody User user);

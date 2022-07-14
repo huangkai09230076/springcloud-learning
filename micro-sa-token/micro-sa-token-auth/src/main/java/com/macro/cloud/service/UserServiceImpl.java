@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
  * Created by macro on 2020/6/19.
  */
 @Service
-public class UserServiceImpl{
+public class UserServiceImpl {
 
     private List<UserDTO> userList;
 
@@ -29,7 +29,7 @@ public class UserServiceImpl{
                 .id(1L)
                 .username("admin")
                 .password(SaSecureUtil.md5("123456"))
-                .permissionList(CollUtil.toList("api:user:info","api:test:hello"))
+                .permissionList(CollUtil.toList("api:user:info", "api:test:hello"))
                 .build());
         userList.add(UserDTO.builder()
                 .id(1L)
@@ -59,7 +59,7 @@ public class UserServiceImpl{
         // 密码校验成功后登录，一行代码实现登录
         StpUtil.login(userDTO.getId());
         // 将用户信息存储到Session中
-        StpUtil.getSession().set("userInfo",userDTO);
+        StpUtil.getSession().set("userInfo", userDTO);
         // 获取当前登录用户Token信息
         saTokenInfo = StpUtil.getTokenInfo();
         return saTokenInfo;

@@ -22,7 +22,7 @@ public class StorageServiceImpl implements StorageService {
     @Override
     public void decrease(Long productId, Integer count) {
         LOGGER.info("------->storage-service中扣减库存开始");
-        storageDao.decrease(productId,count);
+        storageDao.decrease(productId, count);
         LOGGER.info("------->storage-service中扣减库存结束");
     }
 }

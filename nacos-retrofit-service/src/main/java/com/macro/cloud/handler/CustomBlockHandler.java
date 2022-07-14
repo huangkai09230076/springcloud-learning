@@ -9,7 +9,7 @@ import com.macro.cloud.domain.CommonResult;
  */
 public class CustomBlockHandler {
 
-    public CommonResult handleException(BlockException exception){
-        return new CommonResult("自定义限流信息",200);
+    public CommonResult handleException(BlockException exception) {
+        return new CommonResult("自定义限流信息", 200);
     }
 }

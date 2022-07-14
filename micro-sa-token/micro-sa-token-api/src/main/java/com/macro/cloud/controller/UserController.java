@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/user")
-public class UserController{
+public class UserController {
 
     @GetMapping("/info")
     public CommonResult<UserDTO> userInfo() {

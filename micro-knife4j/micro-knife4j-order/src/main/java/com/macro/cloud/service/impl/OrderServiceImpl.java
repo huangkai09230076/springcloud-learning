@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void update(Order order) {
         orderList.stream().filter(orderItem -> orderItem.getId().equals(order.getId())).forEach(orderItem -> {
-            BeanUtil.copyProperties(order,orderItem);
+            BeanUtil.copyProperties(order, orderItem);
         });
     }
 

@@ -19,6 +19,6 @@ public class EurekaClientController {
 
     @GetMapping("/info")
     public Object info() {
-        return "Info from service:" + serviceId + " port:" + servicePort+"!";
+        return "Info from service:" + serviceId + " port:" + servicePort + "!";
     }
 }
